@@ -58,9 +58,9 @@ float cuatro (int n){
 }
 
 float cinco(int n){
-    int i, j;
+    int i=0, j;
     float f = 0.0;
-    for (i=1, j=3; i<=n;i+=2,j+=2)
+    for (i=1, j=3; i<n+2;i+=2,j+=2)
         f += (1) / ((float)i*j);
     return f;
 }
@@ -80,17 +80,19 @@ float once(int n, float x){
 }
 // Sin checar la doce
 float doce(int n, float x, float a){
-    int i = 0;
+    int i = 0,s;
     float f = 0.0;
     do {
     if (i == 0){
         f = 1;
     }else{
+        s *= s + 1;
         f += (powf(x*(once(n, a)),i)) / (2 * 1 + 1);
     }
     }while(i < n);
     return f;
 }
+//Bernoulli
 long int trece(int n, int x)
 {
     int f = 1;
@@ -111,16 +113,19 @@ long int trece(int n, int x)
     } 
     return f;
 }
+//sen(x)
 float diezy6(int n, float x){
-    float sx, fc;
-    int i, sg;
-    for (i = 0, sx = 0, sg = 1, fc = x; i < n; i++, sg*=(-1))
-    {
-        sx += (sg*fc);
-        fc *= ((x / (2 * i + 2))*(x / (2 * i + 3)));
+    float sx=0, f;
+    int i, signo = 1;
+    for (i = 0, f = x; i < n; i++){
+        signo *= (-1);
+        sx += (signo*f);
+        f *= ((x / (2 * i + 2))*(x / (2 * i + 3)));
     }
     return sx;
 }
+//cos(x)
+
 
 int main() {
     int a, n;
