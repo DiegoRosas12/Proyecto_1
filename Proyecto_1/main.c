@@ -45,6 +45,17 @@ float tres(int n){
     return f;
 }
 
+float cuatro (int n){
+    float r=0;
+    int i=0;
+    
+    for(i=1;i<=n;i++){
+        
+        
+        r+=((1.0)/((2*i-1)*(2*i-1)));
+    }
+    return r;
+}
 float cinco(int n){
     int i, j;
     float f = 0.0;
@@ -93,7 +104,7 @@ int main() {
     int a, n;
     float x;
     printf("Seleccione la operación a realizar\n");
-    printf("1) ln(2)\n2) \u03C0/4\n3) \u03C0\u00B2/6\n4) \n5) 1/2\n6) \n11) ln(x)\n");
+    printf("1) ln(2)\n2) \u03C0/4\n3) \u03C0\u00B2/6\n4) \n5) 1/2\n6) \n11) ln(x)\n12) a");
     scanf("%i",&a);
     switch (a) {
         case 1:
