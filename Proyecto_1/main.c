@@ -64,6 +64,17 @@ float cinco(int n){
         f += (1) / ((float)i*j);
     return f;
 }
+float seis(int n){
+    int i=1, j=3;
+    float f = 0.0;
+    do{
+        f += ((1) / ((float)i*j));
+        i+=1;
+        j+=1;
+    }while(j<n+3);
+    return f;
+}
+
 float once(int n, float x){
     int i = 0;
     float f;
@@ -124,6 +135,46 @@ float diezy6(int n, float x){
     return sx;
 }
 //cos(x)
+float diezy7(float x,int n){
+    float cx,fc;
+    int i,sgn;
+    for(i=0, cx=0, sgn=1, fc=1;i<n;i++, sgn*=(-1)){
+        cx+=(sgn*fc);
+        fc*=((x/(2*i+1))*(x/(2*i+2)));}
+    return cx;
+}
+
+float venti1(float x,int n)
+{
+    float asx,fc;
+    int c,i,j;
+    for(i=0, asx=0, fc=x;i<n;i++){
+        asx+=fc;
+        c=2*i+1;
+        fc*=(((c*x)/((i+1)*(i+2)))*(((c+1)*x)/((i+1)*(i+2)))*(1/c));
+        for(j=0;j<i;j++)
+            fc/=4;}
+    return asx;
+}
+
+float venti3(float x,int n)
+{
+    float atx,fc,hpi=3.141592/2;
+    int sgn,i;
+    if((i<=-1)||(i>=1)){
+        for(i=0, atx=0, fc=x, sgn=-1;i<n;i++, sgn*=(-1)){
+            atx+=(sgn*fc);
+            fc/=(x*x*(2*i+1));}
+        if(i<=-1)
+            return atx-hpi;
+        else
+            return hpi+atx;}
+    else
+        for(i=0, atx=0, fc=x, sgn=1;i<n;i++, sgn*=(-1)){
+            atx+=(sgn*fc);
+            fc*=((x/(2*i+1))*x);}
+    return atx;
+}
 
 
 int main() {
