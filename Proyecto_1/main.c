@@ -9,15 +9,13 @@
 //  Ivan Alejandro Rocha Ríos
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 #include <math.h>
 
 int factorial(int n){
     if (n == 1) {
         return 1;
     }else{
-    return n *factorial(n-1);
+        return n *factorial(n-1);
     }
 }
 
@@ -29,41 +27,55 @@ float uno(int n){
         i++;
         signo*=(-1);
     }while(i<n);
+    
     return f;
 }
 
 float dos(int n){
-    int i, signo = 1;
+    int i=0, signo = 1;
     float f = 0.0;
-    for (i=0; i<n; i+=2, signo*=(-1))
+    do{
         f += ((float)signo)/((float)i+1);
+        i+=2;
+        signo*=(-1);
+    }while(i<n);
+    
     return f;
 }
 
 float tres(int n){
-    int i;
+    int i=0;
     float f = 0.0;
-    for (i=0; i<n; i++)
+    do{
         f += (1) / ((float)i+1*((float)i+1));
+        i++;
+    }while(i<n);
+    
     return f;
 }
 
 float cuatro (int n){
     float r=0;
-    int i=0;
-    for(i=1;i<=n;i++){
+    int i=1;
+    
+    do{
         r+=((1.0)/((2*i-1)*(2*i-1)));
-    }
+        i++;
+    }while(i<=n);
     return r;
 }
 
 float cinco(int n){
-    int i=0, j;
+    int i=1, j=3;
     float f = 0.0;
-    for (i=1, j=3; i<n+2;i+=2,j+=2)
-        f += (1) / ((float)i*j);
+    do{
+        f += ((1) / ((float)i*j));
+        i+=2;
+        j+=2;
+    }while(i<n++||j<n+3);
     return f;
 }
+
 float seis(int n){
     int i=1, j=3;
     float f = 0.0;
@@ -74,7 +86,7 @@ float seis(int n){
     }while(j<n+3);
     return f;
 }
-
+//Ln(x)
 float once(int n, float x){
     int i = 0;
     float f;
@@ -91,15 +103,13 @@ float once(int n, float x){
 }
 // Sin checar la doce
 float doce(int n, float x, float a){
+    float f, fx = 1;
+    float b = (x*once(n, a));
     int i = 0;
-    float f = 0.0;
-    do {
-    if (i == 0){
-        f = 1;
-    }else{
-        
+    while (i<n){
+    fx *= b;
+    f += fx;
     }
-    }while(i < n);
     return f;
 }
 //Bernoulli
@@ -144,18 +154,18 @@ float diezy7(float x,int n){
     return cx;
 }
 
-float venti1(float x,int n)
-{
+float veinti1(float x,int n){ //Arcsin(x)
     float asx,fc;
     int c,i,j;
     for(i=0, asx=0, fc=x;i<n;i++){
         asx+=fc;
         c=2*i+1;
         fc*=(((c*x)/((i+1)*(i+2)))*(((c+1)*x)/((i+1)*(i+2)))*(1/c));
+        if(i==0)
+            continue;
         for(j=0;j<i;j++)
             fc/=4;}
-    return asx;
-}
+    return asx;}
 
 float venti3(float x,int n)
 {
@@ -175,7 +185,36 @@ float venti3(float x,int n)
             fc*=((x/(2*i+1))*x);}
     return atx;
 }
+float veinti5(float x,int n){  //Cosh(x)
+    float chx,fc;
+    int i;
+    for(i=0, chx=0, fc=1;i<n;i++){
+        chx+=fc;
+        fc*=((x/(2*i+1))*(x/(2*i+2)));}
+    return chx;}
 
+float veinti7(float x,int n){ //Arcsinh(x)
+    float ashx,fc;
+    int c,i,j,sgn;
+    for(i=0, ashx=0, fc=x, sgn=1;i<n;i++, sgn*=(-1)){
+        ashx+=(fc*sgn);
+        c=2*i+1;
+        fc*=(((c*x)/((i+1)*(i+2)))*(((c+1)*x)/((i+1)*(i+2)))*(1/c));
+        if(i==0)
+            continue;
+        for(j=0;j<i;j++)
+            fc/=4;}
+    return ashx;}
+
+float veinti9(float x,int n){ //ln(1+x)/1+x
+    float lxdx,fc;
+    int i,j,sgn;
+    for(i=0, sgn=1, lxdx=0, fc=x;i<n;i++, sgn*=(-1)){
+        lxdx+=(fc*sgn);
+        for(j=0;j<=i;j++)
+            fc+=(1/(j+1));
+        fc*=x;}
+    return lxdx;}
 
 int main() {
     int a, n;
