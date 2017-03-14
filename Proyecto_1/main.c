@@ -80,14 +80,13 @@ float once(int n, float x){
 }
 // Sin checar la doce
 float doce(int n, float x, float a){
-    int i = 0,s;
+    int i = 0;
     float f = 0.0;
     do {
     if (i == 0){
         f = 1;
     }else{
-        s *= s + 1;
-        f += (powf(x*(once(n, a)),i)) / (2 * 1 + 1);
+        
     }
     }while(i < n);
     return f;
