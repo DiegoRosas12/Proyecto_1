@@ -22,10 +22,13 @@ int factorial(int n){
 }
 
 float uno(int n){
-    int i, signo = 1;
+    int i=0, signo = 1;
     float f = 0.0;
-    for (i=0; i<n; i++, signo*=(-1))
+    do{
         f += ((float)signo)/((float)i+1);
+        i++;
+        signo*=(-1);
+    }while(i<n);
     return f;
 }
 
@@ -48,14 +51,12 @@ float tres(int n){
 float cuatro (int n){
     float r=0;
     int i=0;
-    
     for(i=1;i<=n;i++){
-        
-        
         r+=((1.0)/((2*i-1)*(2*i-1)));
     }
     return r;
 }
+
 float cinco(int n){
     int i, j;
     float f = 0.0;
@@ -77,6 +78,7 @@ float once(int n, float x){
     }
     return f;
 }
+// Sin checar la doce
 float doce(int n, float x, float a){
     int i = 0;
     float f = 0.0;
@@ -87,6 +89,26 @@ float doce(int n, float x, float a){
         f += (powf(x*(once(n, a)),i)) / (2 * 1 + 1);
     }
     }while(i < n);
+    return f;
+}
+long int trece(int n, int x)
+{
+    int f = 1;
+    if(n == 1|| n == 0 || n == x)
+        return 	1;
+    unsigned int d = n - x;
+    
+    while(n>1 || x>1 || d>1)
+    {
+        f *= n;
+        f /= (x * d);
+        if(n>1)
+            n--;
+        if(x>1)
+            x--;
+        if(d>1)
+            d--;
+    } 
     return f;
 }
 float diezy6(int n, float x){
@@ -103,8 +125,8 @@ float diezy6(int n, float x){
 int main() {
     int a, n;
     float x;
-    printf("Seleccione la operación a realizar\n");
-    printf("1) ln(2)\n2) \u03C0/4\n3) \u03C0\u00B2/6\n4) \n5) 1/2\n6) \n11) ln(x)\n12) a");
+    printf("Seleccione la operacion a realizar\n");
+    printf("1) ln(2)\n2) \n4)\n3)  \n4) \n5) 1/2\n6) \n11) ln(x)\n12) a^x\n13) \n");
     scanf("%i",&a);
     switch (a) {
         case 1:
