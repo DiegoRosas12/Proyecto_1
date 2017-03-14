@@ -90,7 +90,7 @@ float seis(int n){
 float once(int n, float x){
     int i = 0;
     float f;
-    if (x >= 1/2){
+    if (x >= (1/2)){
     do{
         i++;
         //printf("%f",pow(((x-1)/x),i+1)*(1/(i+1)));
@@ -101,16 +101,23 @@ float once(int n, float x){
     }
     return f;
 }
-// Sin checar la doce
+// a^x
 float doce(int n, float x, float a){
-    float f, fx = 1;
+    float f = 0.0, fx = 1.0;
     float b = (x*once(n, a));
     int i = 0;
-    while (i<n){
-    fx *= b;
-    f += fx;
+    if (x >= (1/2)){
+        if (n == 1)
+        return 1;
+        while (i<n){
+            fx *= b/(i+1);
+            f += fx;
+            i++;
+        }
+    }else{
+        printf("X debe ser mayor a 1/2\n");
     }
-    return f;
+    return f + 1;
 }
 //Bernoulli
 long int trece(int n, int x)
@@ -165,9 +172,11 @@ float veinti1(float x,int n){ //Arcsin(x)
             continue;
         for(j=0;j<i;j++)
             fc/=4;}
-    return asx;}
+    return asx;
+}
 
-float venti3(float x,int n)
+
+float veinti3(float x,int n)
 {
     float atx,fc,hpi=3.141592/2;
     int sgn,i;
@@ -185,6 +194,18 @@ float venti3(float x,int n)
             fc*=((x/(2*i+1))*x);}
     return atx;
 }
+
+float veinti4(int n, float x){
+    float f = 0.0, fx = x;
+    int i = 0;
+    while (i<n) {
+        f += fx;
+        fx *= (x*x)/(2*i+1);
+        i++;
+    }
+    return f;
+}
+
 float veinti5(float x,int n){  //Cosh(x)
     float chx,fc;
     int i;
