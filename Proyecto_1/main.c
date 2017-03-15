@@ -259,7 +259,7 @@ float veinti2(int n, float x){
     }else{
         printf("|x| tiene que ser menos a 1\n");
     }
-    return f;
+    return M_PI_2 - f;
 }
 
 float veinti3(float x,int n){   //Arctg(x)
@@ -435,8 +435,47 @@ int main() {
             scanf("%i",&n);
             printf("El resultado es: %f\n",tres(n));
             break;
-        //Falta la funcion 4
+        case 4:
+            printf("1/2\n");
+            printf("Ingrese el numero de iteraciones\n");
+            scanf("%i",&n);
+            printf("El resultado es: %f\n",cinco(n));
+            break;
         case 5:
+            printf("1/2\n");
+            printf("Ingrese el numero de iteraciones\n");
+            scanf("%i",&n);
+            printf("El resultado es: %f\n",cinco(n));
+            break;
+        case 6:
+            printf("1/2\n");
+            printf("Ingrese el numero de iteraciones\n");
+            scanf("%i",&n);
+            printf("El resultado es: %f\n",seis(n));
+            break;
+        case 7:
+            printf("1/2\n");
+            printf("Ingrese el numero de iteraciones\n");
+            scanf("%i",&n);
+            printf("Ingrese x\n");
+            scanf("%f",&x);
+            printf("El resultado es: %f\n",siete(x, n));
+            break;
+        case 8:
+            printf("1/2\n");
+            printf("Ingrese el numero de iteraciones\n");
+            scanf("%i",&n);
+            printf("Ingrese x\n");
+            scanf("%f",&x);
+            printf("El resultado es: %f\n",ocho(x,n));
+            break;
+        case 9:
+            printf("1/2\n");
+            printf("Ingrese el numero de iteraciones\n");
+            scanf("%i",&n);
+            printf("El resultado es: %f\n",cinco(n));
+            break;
+        case 10:
             printf("1/2\n");
             printf("Ingrese el numero de iteraciones\n");
             scanf("%i",&n);
@@ -450,10 +489,128 @@ int main() {
             scanf("%f",&x);
             printf("El resultado es: %f\n",once(n,x));
             break;
+        case 12:
+            printf("1/2\n");
+            printf("Ingrese el numero de iteraciones\n");
+            scanf("%i",&n);
+            printf("Ingrese el valor de x\n");
+            scanf("%f",&x);
+            printf("Ingrese el valor de a\n");
+            scanf("%i",&a);
+            printf("El resultado es: %f\n",doce(n, x, a));
+            break;
+        case 13:
+            printf("1/2\n");
+            printf("Ingrese el numero de iteraciones\n");
+            scanf("%i",&n);
+            printf("El resultado es: %f\n",cinco(n));
+            break;
+        case 14:
+            printf("1/2\n");
+            printf("Ingrese el numero de iteraciones\n");
+            scanf("%i",&n);
+            printf("El resultado es: %f\n",cinco(n));
+            break;
+        case 15:
+            printf("1/2\n");
+            printf("Ingrese el numero de iteraciones\n");
+            scanf("%i",&n);
+            printf("El resultado es: %f\n",cinco(n));
+            break;
+        case 16:
+            printf("1/2\n");
+            printf("Ingrese el numero de iteraciones\n");
+            scanf("%i",&n);
+            printf("El resultado es: %f\n",cinco(n));
+            break;
+        case 17:
+            printf("1/2\n");
+            printf("Ingrese el numero de iteraciones\n");
+            scanf("%i",&n);
+            printf("El resultado es: %f\n",cinco(n));
+            break;
+        case 18:
+            printf("1/2\n");
+            printf("Ingrese el numero de iteraciones\n");
+            scanf("%i",&n);
+            printf("El resultado es: %f\n",cinco(n));
+            break;
+        case 19:
+            printf("1/2\n");
+            printf("Ingrese el numero de iteraciones\n");
+            scanf("%i",&n);
+            printf("El resultado es: %f\n",cinco(n));
+            break;
+        case 20:
+            printf("1/2\n");
+            printf("Ingrese el numero de iteraciones\n");
+            scanf("%i",&n);
+            printf("El resultado es: %f\n",cinco(n));
+            break;
+        case 21:
+            printf("1/2\n");
+            printf("Ingrese el numero de iteraciones\n");
+            scanf("%i",&n);
+            printf("El resultado es: %f\n",cinco(n));
+            break;
+        case 22:
+            printf("1/2\n");
+            printf("Ingrese el numero de iteraciones\n");
+            scanf("%i",&n);
+            printf("El resultado es: %f\n",cinco(n));
+            break;
+        case 23:
+            printf("1/2\n");
+            printf("Ingrese el numero de iteraciones\n");
+            scanf("%i",&n);
+            printf("El resultado es: %f\n",cinco(n));
+            break;
+        case 24:
+            printf("1/2\n");
+            printf("Ingrese el numero de iteraciones\n");
+            scanf("%i",&n);
+            printf("El resultado es: %f\n",cinco(n));
+            break;
+        case 25:
+            printf("1/2\n");
+            printf("Ingrese el numero de iteraciones\n");
+            scanf("%i",&n);
+            printf("El resultado es: %f\n",cinco(n));
+            break;
+        case 26:
+            printf("1/2\n");
+            printf("Ingrese el numero de iteraciones\n");
+            scanf("%i",&n);
+            printf("El resultado es: %f\n",cinco(n));
+            break;
+        case 27:
+            printf("1/2\n");
+            printf("Ingrese el numero de iteraciones\n");
+            scanf("%i",&n);
+            printf("El resultado es: %f\n",cinco(n));
+            break;
+        case 28:
+            printf("1/2\n");
+            printf("Ingrese el numero de iteraciones\n");
+            scanf("%i",&n);
+            printf("El resultado es: %f\n",cinco(n));
+            break;
+        case 29:
+            printf("1/2\n");
+            printf("Ingrese el numero de iteraciones\n");
+            scanf("%i",&n);
+            printf("El resultado es: %f\n",cinco(n));
+            break;
+        case 30:
+            printf("1/2\n");
+            printf("Ingrese el numero de iteraciones\n");
+            scanf("%i",&n);
+            printf("El resultado es: %f\n",cinco(n));
+            break;
 
         default:
             break;
     }
-    
+    printf("Desea hacer otra operacion?\n");
     return 0;
 }
