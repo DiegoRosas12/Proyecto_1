@@ -248,9 +248,18 @@ float veinti1r(float x,int n){
 }
 //arccos
 float veinti2(int n, float x){
+    float f = 0.0, fx = x;
+    int i = 0;
     if (sqrt(x*x) < 1) {
-
+        while (i<n){
+        f += fx;
+        fx *= (x*x*(2*i-1)*(2*i)) / ((4)*i*i*(2*i+1));
+        i++;
+        }
+    }else{
+        printf("|x| tiene que ser menos a 1\n");
     }
+    return f;
 }
 
 float veinti3(float x,int n){   //Arctg(x)
