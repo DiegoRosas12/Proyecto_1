@@ -86,6 +86,38 @@ float seis(int n){
     }while(j<n+3);
     return f;
 }
+
+float siete(float x, int n){
+    float r=1;
+    int i=1, fact=1;
+    float num=1;
+    
+    do{
+        num*=x;
+        fact*=i;
+        i++;
+        r+=(num/(fact));
+    }while(i<=n);
+    return r;
+    
+}
+
+float ocho(float x, int n){
+    float r=0;
+    int i=1,sig=1;
+    float num=1;
+    
+    
+    do{
+        num*=x;
+        r+=((sig)*((num/i)));
+        sig*= -1;
+        i++;
+        
+    }while(i<=n);
+    return r;
+    
+}
 //Ln(x)
 float once(int n, float x){
     int i = 0;
@@ -140,6 +172,14 @@ long int trece(int n, int x)
     } 
     return f;
 }
+//Ek
+float catorce(float k){
+    int i;
+    float f, fx;
+    
+    return f;
+}
+
 //sen(x)
 float diezy6(int n, float x){
     float sx=0, f;
@@ -175,6 +215,11 @@ float veinti1(float x,int n){ //Arcsin(x)
     return asx;
 }
 
+float veinti2(int n, float x){
+    if (sqrt(x*x) < 1) {
+
+    }
+}
 
 float veinti3(float x,int n)
 {
@@ -227,6 +272,21 @@ float veinti7(float x,int n){ //Arcsinh(x)
             fc/=4;}
     return ashx;}
 
+float veinti8(int n, float x){
+    int i = 0;
+    float f, fx = x;
+    
+    while (i < n) {
+    if (sqrt(x*x) < 1){
+        f += fx / (2*i+1);
+        fx *= (x*x);
+        }else{
+        printf("|x| tiene que ser menor a 1");
+        }
+    }
+    return f;
+    
+}
 float veinti9(float x,int n){ //ln(1+x)/1+x
     float lxdx,fc;
     int i,j,sgn;
