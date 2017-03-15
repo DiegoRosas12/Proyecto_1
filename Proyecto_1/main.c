@@ -183,7 +183,6 @@ float catorce(int n,int k){
         sg *= (-1);
         i += 2;
     }
-    
     return f*(pow(2, (2*k + 1)))*(factorial(2*k)) / powf(M_PI, a);
 }
 
@@ -228,15 +227,14 @@ float veinti2(int n, float x){
     }
 }
 
-float veinti3(float x,int n)
-{
+float veinti3(float x,int n){   //Arctg(x)
     float atx,fc,hpi=3.141592/2;
     int sgn,i;
-    if((i<=-1)||(i>=1)){
+    if((x<=-1)||(x>=1)){
         for(i=0, atx=0, fc=x, sgn=-1;i<n;i++, sgn*=(-1)){
             atx+=(sgn*fc);
             fc/=(x*x*(2*i+1));}
-        if(i<=-1)
+        if(x<=-1)
             return atx-hpi;
         else
             return hpi+atx;}
