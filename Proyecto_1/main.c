@@ -152,6 +152,7 @@ float doce(int n, float x, float a){
     }
     return f + 1;
 }
+
 //Bernoulli
 long int trece(int n, int x)
 {
@@ -316,7 +317,19 @@ float veinti4(int n, float x){
     }
     return f;
 }
-
+float veinti4r(int n, float x){
+    static float fx;
+    static int i;
+    if (n == 1) {
+        return x;
+    }else{
+        fx *= (x*x)/(2*i+1);
+        i++;
+        return veinti4(n-1, x) + fx;
+    }
+    return 0;
+    
+}
 float veinti5(float x,int n){  //Cosh(x)
     float chx,fc;
     int i;
@@ -411,12 +424,12 @@ float veinti9r(float x,int n)
 }
 
 int main() {
-    int a, n;
+    int c, n;
     float x;
     printf("Seleccione la operacion a realizar\n");
     printf("1) ln(2)\n2) \n4)\n3)  \n4) \n5) 1/2\n6) \n11) ln(x)\n12) a^x\n13) \n");
-    scanf("%i",&a);
-    switch (a) {
+    scanf("%i",&c);
+    switch (c) {
         case 1:
             printf("1) ln(2)\n");
             printf("Ingrese el numero de iteraciones\n");
@@ -491,12 +504,13 @@ int main() {
             break;
         case 12:
             printf("1/2\n");
+            float a;
             printf("Ingrese el numero de iteraciones\n");
             scanf("%i",&n);
             printf("Ingrese el valor de x\n");
             scanf("%f",&x);
             printf("Ingrese el valor de a\n");
-            scanf("%i",&a);
+            scanf("%f",&a);
             printf("El resultado es: %f\n",doce(n, x, a));
             break;
         case 13:
