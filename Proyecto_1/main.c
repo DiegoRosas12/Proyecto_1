@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <math.h>
 
+
 int factorial(int n){
     if (n == 1) {
         return 1;
@@ -173,11 +174,17 @@ long int trece(int n, int x)
     return f;
 }
 //Ek
-float catorce(float k){
-    int i;
-    float f, fx;
+float catorce(int n,int k){
+    int i = 0, sg = 1;
+    float f, a;
+    a = 2*k + 1;
+    while (i < n) {
+        f += (sg*1) / (powf((float)i+1, (float)a));
+        sg *= (-1);
+        i += 2;
+    }
     
-    return f;
+    return f*(pow(2, (2*k + 1)))*(factorial(2*k)) / powf(M_PI, a);
 }
 
 //sen(x)
