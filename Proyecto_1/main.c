@@ -206,6 +206,17 @@ float diezy7(float x,int n){
         fc*=((x/(2*i+1))*(x/(2*i+2)));}
     return cx;
 }
+float diezy7r(float x,int n){
+    static float fc=1;
+    static int i=1;
+    float c;
+    fc*=((x/(2*n))*(x/(2*n-1)));
+    c=(1-2*(i%2))*fc;
+    i++;
+    if(i<=(n+1))
+        return diezy7r(x,n)+c;
+    return 0;
+}
 
 float veinti1(float x,int n){ //Arcsin(x)
     float asx,fc;
@@ -220,7 +231,22 @@ float veinti1(float x,int n){ //Arcsin(x)
             fc/=4;}
     return asx;
 }
-
+float veinti1r(float x,int n){
+    static float fc;
+    static int i=1;
+    int aux,j;
+    if(i==1)
+        fc=x;
+    aux=2*i;
+    fc*=((aux*x)/(i*(i-1))*((aux-1)*x)/(i*(i-1))*(1/(aux+1)));
+    for(j=0;j<i;j++)
+        fc/=4;
+    i++;
+    if(i<=(n+1))
+        return veinti1r(x,n)+fc;
+    return 0;
+}
+//arccos
 float veinti2(int n, float x){
     if (sqrt(x*x) < 1) {
 
@@ -244,6 +270,32 @@ float veinti3(float x,int n){   //Arctg(x)
             fc*=((x/(2*i+1))*x);}
     return atx;
 }
+float veinti3r(float x,int n){
+    static float fc;
+    static int i=1;
+    float c,hpi=3.141592/2;
+    if(i==1)
+        fc=x;
+    if((x<=-1)||(x>=1)){
+        fc/=(x*x*(2*i));
+        c=(1-((i+1)%2)*2)*fc;
+        i++;
+        if(x<=-1){
+            if(i<=(n+1))
+                return veinti3r(x,n)+c;
+            return -hpi;}
+        else{
+            if(i<=(n+1))
+                return veinti3r(x,n)+c;
+            return hpi;}}
+    else{
+        fc*=((x/(2*i))*x);
+        c=(1-2*(i%2))*fc;
+        i++;
+        if(i<=(n+1))
+            return veinti3r(x,n)+c;
+        return 0;}
+}
 
 float veinti4(int n, float x){
     float f = 0.0, fx = x;
@@ -262,7 +314,19 @@ float veinti5(float x,int n){  //Cosh(x)
     for(i=0, chx=0, fc=1;i<n;i++){
         chx+=fc;
         fc*=((x/(2*i+1))*(x/(2*i+2)));}
-    return chx;}
+    return chx;
+}
+float veinti5r(float x,int n){
+    static float fc=1;
+    static int i=1;
+    fc*=((x/(2*n))*(x/(2*n-1)));
+    i++;
+    if(i<=(n+1))
+        return diezy7r(x,n)+fc;
+    return 0;
+}
+
+
 
 float veinti7(float x,int n){ //Arcsinh(x)
     float ashx,fc;
@@ -275,7 +339,25 @@ float veinti7(float x,int n){ //Arcsinh(x)
             continue;
         for(j=0;j<i;j++)
             fc/=4;}
-    return ashx;}
+    return ashx;
+}
+float veinti7r(float x,int n){
+    static float fc;
+    static int i=1;
+    int aux,j;
+    float c;
+    if(i==1)
+        fc=x;
+    aux=2*i;
+    fc*=((aux*x)/(i*(i-1))*((aux-1)*x)/(i*(i-1))*(1/(aux+1)));
+    for(j=0;j<i;j++)
+        fc/=4;
+    c=(1-2*(i%2))*fc;
+    i++;
+    if(i<=(n+1))
+        return veinti7r(x,n)+c;
+    return 0;
+}
 
 float veinti8(int n, float x){
     int i = 0;
@@ -300,7 +382,24 @@ float veinti9(float x,int n){ //ln(1+x)/1+x
         for(j=0;j<=i;j++)
             fc+=(1/(j+1));
         fc*=x;}
-    return lxdx;}
+    return lxdx;
+}
+float veinti9r(float x,int n)
+{
+    static float fc;
+    static int i=1,j=0;
+    float c;
+    if(i==1)
+        fc=x;
+    for(;j<=i;j++)
+        fc+=(1/(j+1));
+    fc*=x;
+    c=(1-2*(i%2))*fc;
+    i++;
+    if(i<=(n+1))
+        return veinti9r(x,n)+c;
+    return 0;
+}
 
 int main() {
     int a, n;
