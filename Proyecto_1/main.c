@@ -119,6 +119,21 @@ float ocho(float x, int n){
     return r;
     
 }
+float nueve(float x, int n){
+    float r=0;
+    int i=0;
+    float num=x;
+    
+    
+    do{
+        r+=((num)/(2*i+1));
+        num*=x*x;
+        i++;
+        
+    }while(i<n);
+    return r;
+    
+}
 //Ln(x)
 float once(int n, float x){
     int i = 0;
@@ -426,7 +441,7 @@ float veinti9r(float x,int n)
 int main(){
     char op;
     int i,n;
-    float x,a;
+    float x = 0.0,a;
     do{
         printf("Introduzca numero de iteraciones: ");
         scanf("%d",&n);}
