@@ -104,29 +104,29 @@ float siete(float x, int n){
     return r;
     
 }
-//
+// ln (1 + x)
 float ocho(float x, int n){
     float r=0;
     int i=1,sig=1;
     float num=1;
-    
-    
+    if(x>-1&&x<=1){
     do{
         num*=x;
         r+=((sig)*((num/i)));
         sig*= -1;
         i++;
-        
     }while(i<=n);
-    return r;
-    
+    }else{
+            
+            printf("Datos incorretos\n\n");
+        }
+     return r;
 }
+// 1/2 ln(1+x/1-x)
 float nueve(float x, int n){
     float r=0;
     int i=0;
     float num=x;
-    
-    
     do{
         r+=((num)/(2*i+1));
         num*=x*x;
@@ -137,33 +137,55 @@ float nueve(float x, int n){
     
 }
 //Ln(x)
+float diez(float x, int n){
+    float r=0;
+    int i=0;
+    float ope=((x-1)/(x+1));
+    float a = ope;
+    do{
+        r+=(a*(1/(2*(float)i+1)));
+        a*=ope*ope;
+        i++;
+        printf("%f\n",r);
+        
+    }while(i<n);
+    
+    return 2*r;
+    
+}
+//Ln(x)
 float once(int n, float x){
     int i = 0;
-    float f;
-    if (x >= (1/2)){
+    float f,a, fx = 1;
+    if (x >= (0.5)){
+        a = ((x-1) / (x));
     do{
         i++;
-        //printf("%f",pow(((x-1)/x),i+1)*(1/(i+1)));
-        f += (powf((x-1)/x,i)) * (1/i);
+        fx *= a;
+        f += ((1/(float)i) * fx);
+        printf("%f\n",f);
     }while(i < n);
     }else{
         printf("X debe ser mayor a 1/2\n");
     }
     return f;
 }
+
 // a^x
 float doce(int n, float x, float a){
     float f = 0.0, fx = 1.0;
     float b = (x*once(n, a));
     int i = 0;
+    
     if (x >= (1/2)){
         if (n == 1)
-        return 1;
+        f = 1;
         while (i<n){
             fx *= b/(i+1);
             f += fx;
             i++;
         }
+        f += 1;
     }else{
         printf("X debe ser mayor a 1/2\n");
     }
@@ -463,7 +485,7 @@ int main(){
             scanf("%f",&x);
             system("cls");
             printf("\tIntroduzca opcion:\n");
-            printf("\n7)e^x\n8)ln(1+x)\n9)(1/2)ln((1+x)/(1-x))10)ln(x)\n11)ln(x) - Metodo alterno\n12)a^x\n13)Bk\n14)Ek\n15)E2k\n16)sen(x)");
+            printf("\n7)e^x\n8)ln(1+x)\n9)(1/2)ln((1+x)/(1-x))\n10)ln(x)\n11)ln(x) - Metodo alterno\n12)a^x\n13)Bk\n14)Ek\n15)E2k\n16)sen(x)");
             printf("\n17)cos(x)\n18)tan(x)\n19)sec(x)\n20)csc(x)\n21)arcsen(x)\n22)arccos(x)\n23)arctan(x)\n24)senh(x)\n25)cosh(x)\n26)tanh(x)");
             printf("\n27)arcsenh(x)\n28)arctanh(x)\n29)ln(1+x)/(1+x)\n30)e^sen(x)\n>>Su opcion: ");
         }
@@ -496,8 +518,10 @@ int main(){
             printf("\nln(1+%.2f) = %f\n",x,ocho(x,n));
             break;
         case 9:
+            printf("\nln(1+%.2f) = %f\n",x,nueve(x,n));
             break;
         case 10:
+            printf("\nln(1+%.2f) = %f\n",x,diez(x,n));
             break;
         case 11:
             printf("\nln(%.2f) = %f\n",x,once(n,x));
@@ -536,7 +560,7 @@ int main(){
             printf("\narctan(%.2f) = %f\nResultado recursividad: %f\n",x,veinti3(x,n),veinti3r(x,n));
             break;
         case 24:
-            printf("\nsenh(%.2f) = %\nf",x,veinti4(n,x));
+            printf("\nsenh(%.2f) = %f\n",x,veinti4(n,x));
             break;
         case 25:
             printf("\ncosh(%.2f) = %f\nResultado recursividad: %f\n",x,veinti5(x,n),veinti5r(x,n));
