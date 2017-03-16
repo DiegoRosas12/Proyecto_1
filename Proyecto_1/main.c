@@ -19,7 +19,7 @@ int factorial(int n){
         return n *factorial(n-1);
     }
 }
-
+//Ln(2)
 float uno(int n){
     int i=0, signo = 1;
     float f = 0.0;
@@ -31,30 +31,33 @@ float uno(int n){
     
     return f;
 }
-
+//pi/4
 float dos(int n){
-    int i=0, signo = 1;
+    int i=0, signo = 1, cont = 0;
     float f = 0.0;
     do{
         f += ((float)signo)/((float)i+1);
+       
         i+=2;
+        cont++;
         signo*=(-1);
-    }while(i<n);
+    }while(cont<n);
     
     return f;
 }
-
+//pi^2/6
 float tres(int n){
     int i=0;
     float f = 0.0;
     do{
-        f += (1) / ((float)i+1*((float)i+1));
+        f += (1) / (((float)i+1) * ((float)i+1));
+        printf("%f\n",f);
         i++;
     }while(i<n);
     
     return f;
 }
-
+//pi^2 / 8
 float cuatro (int n){
     float r=0;
     int i=1;
@@ -65,7 +68,7 @@ float cuatro (int n){
     }while(i<=n);
     return r;
 }
-
+// 1/2
 float cinco(int n){
     int i=1, j=3;
     float f = 0.0;
@@ -76,7 +79,7 @@ float cinco(int n){
     }while(i<n++||j<n+3);
     return f;
 }
-
+// 3/4
 float seis(int n){
     int i=1, j=3;
     float f = 0.0;
@@ -87,22 +90,21 @@ float seis(int n){
     }while(j<n+3);
     return f;
 }
-
+// e^x
 float siete(float x, int n){
     float r=1;
     int i=1, fact=1;
     float num=1;
-    
     do{
         num*=x;
         fact*=i;
         i++;
         r+=(num/(fact));
-    }while(i<=n);
+    }while(i<n);
     return r;
     
 }
-
+//
 float ocho(float x, int n){
     float r=0;
     int i=1,sig=1;
@@ -463,60 +465,61 @@ int main(){
             printf("\tIntroduzca opcion:\n");
             printf("\n7)e^x\n8)ln(1+x)\n9)(1/2)ln((1+x)/(1-x))10)ln(x)\n11)ln(x) - Metodo alterno\n12)a^x\n13)Bk\n14)Ek\n15)E2k\n16)sen(x)");
             printf("\n17)cos(x)\n18)tan(x)\n19)sec(x)\n20)csc(x)\n21)arcsen(x)\n22)arccos(x)\n23)arctan(x)\n24)senh(x)\n25)cosh(x)\n26)tanh(x)");
-            printf("\n27)arcsenh(x)\n28)arctanh(x)\n29)ln(1+x)/(1+x)\n30)e^sen(x)\n>>Su opcion: ");}
+            printf("\n27)arcsenh(x)\n28)arctanh(x)\n29)ln(1+x)/(1+x)\n30)e^sen(x)\n>>Su opcion: ");
+        }
         scanf("%d",&i);}
     while((i<1)||(i>30));
     switch(i)
     {
         case 1:
-            printf("\nln(2) = %f",uno(n));
+            printf("\nln(2) = %f\n",uno(n));
             break;
         case 2:
-            printf("\npi/4 = %f",dos(n));
+            printf("\npi/4 = %f\n",dos(n));
             break;
         case 3:
-            printf("\npi^2/6 = %f",tres(n));
+            printf("\npi^2/6 = %f\n",tres(n));
             break;
         case 4:
-            printf("\npi^2/8 = %f",cuatro(n));
+            printf("\npi^2/8 = %f\n",cuatro(n));
             break;
         case 5:
-            printf("\n1/2 = %f",cinco(n));
+            printf("\n1/2 = %f\n",cinco(n));
             break;
         case 6:
-            printf("\n3/4 = %f",seis(n));
+            printf("\n3/4 = %f\n",seis(n));
             break;
         case 7:
-            printf("\ne ^ %.2f = %f",x,siete(x,n));
+            printf("\ne ^ %.2f = %fºn",x,siete(x,n));
             break;
         case 8:
-            printf("\nln(1+%.2f) = %f",x,ocho(x,n));
+            printf("\nln(1+%.2f) = %f\n",x,ocho(x,n));
             break;
         case 9:
             break;
         case 10:
             break;
         case 11:
-            printf("\nln(%.2f) = %f",x,once(n,x));
+            printf("\nln(%.2f) = %f\n",x,once(n,x));
             break;
         case 12:
             printf("\nIntroduzca valor de a: ");
             scanf("%f",&a);
-            printf("%.2f ^ %.2f = %f",a,x,doce(n,x,a));
+            printf("%.2f ^ %.2f = %f\n",a,x,doce(n,x,a));
             break;
         case 13:
-            printf("\nB(%.0f) = %li",x,trece(n,x));
+            printf("\nB(%.0f) = %li\n",x,trece(n,x));
             break;
         case 14:
-            printf("\nE(%.0f) = %f",x,catorce(x,n));
+            printf("\nE(%.0f) = %f\n",x,catorce(x,n));
             break;
         case 15:
             break;
         case 16:
-            printf("\nsen(%.2f) = %f",x,diezy6(n,x));
+            printf("\nsen(%.2f) = %f\n",x,diezy6(n,x));
             break;
         case 17:
-            printf("\ncos(%.2f) = %f\nResultado recursividad: %f",x,diezy7(x,n),diezy7r(x,n));
+            printf("\ncos(%.2f) = %f\nResultado recursividad: %f\n",x,diezy7(x,n),diezy7r(x,n));
             break;
         case 18:
             break;
@@ -525,23 +528,23 @@ int main(){
         case 20:
             break;
         case 21:
-            printf("\narcsen(%.2f) = %f\nResultado recursividad: %f",x,veinti1(x,n),veinti1r(x,n));
+            printf("\narcsen(%.2f) = %f\nResultado recursividad: %f\n",x,veinti1(x,n),veinti1r(x,n));
             break;
         case 22:
             break;
         case 23:
-            printf("\narctan(%.2f) = %f\nResultado recursividad: %f",x,veinti3(x,n),veinti3r(x,n));
+            printf("\narctan(%.2f) = %f\nResultado recursividad: %f\n",x,veinti3(x,n),veinti3r(x,n));
             break;
         case 24:
-            printf("\nsenh(%.2f) = %f",x,veinti4(n,x));
+            printf("\nsenh(%.2f) = %\nf",x,veinti4(n,x));
             break;
         case 25:
-            printf("\ncosh(%.2f) = %f\nResultado recursividad: %f",x,veinti5(x,n),veinti5r(x,n));
+            printf("\ncosh(%.2f) = %f\nResultado recursividad: %f\n",x,veinti5(x,n),veinti5r(x,n));
             break;
         case 26:
             break;
         case 27:
-            printf("\narcsenh(%.2f) = %f\nResultado recursividad: %f",x,veinti7(x,n),veinti7r(x,n));
+            printf("\narcsenh(%.2f) = %f\nResultado recursividad: %f\n",x,veinti7(x,n),veinti7r(x,n));
             break;
         case 28:
             printf("\narctanh(%.2f) = %f",x,veinti8(n,x));
