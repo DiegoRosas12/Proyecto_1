@@ -174,6 +174,19 @@ float siete(float x, int n){
     return r;
     
 }
+float sieter(float x, int n){
+    static float r = 1, num = 1;
+    static int i = 1, fact = 1;
+    if (n == 1)
+        return r + (num/(fact));
+    else {
+        num*=x;
+        fact*=i;
+        i++;
+        r+=(num/(fact));
+        return sieter(x, n-1);
+    }
+}
 // ln (1 + x)
 float ocho(float x, int n){
     float r=0;
@@ -588,7 +601,8 @@ int main(){
             printf("\n3/4 (recursiva)= %f\n",seisr(n));
             break;
         case 7:
-            printf("\ne ^ %.2f = %fºn",x,siete(x,n));
+            printf("\ne ^ %.2f = %f\n",x,siete(x,n));
+            printf("\ne ^ %.2f(recursiva) = %f\n",x,sieter(x,n));
             break;
         case 8:
             printf("\nln(1+%.2f) = %f\n",x,ocho(x,n));
