@@ -31,13 +31,26 @@ float uno(int n){
     
     return f;
 }
+float unor(int n){
+    static int signo = 1, i = 0;
+    static float f = 0.0;
+
+    if (n == 1)
+        return f + ((float)signo)/((float)i+1);
+    else {
+        f += ((float)signo)/((float)i+1);
+        i++;
+        signo *= (-1);
+        return unor(n-1);
+    }
+    return 0;
+}
 //pi/4
 float dos(int n){
     int i=0, signo = 1, cont = 0;
     float f = 0.0;
     do{
         f += ((float)signo)/((float)i+1);
-       
         i+=2;
         cont++;
         signo*=(-1);
@@ -45,28 +58,61 @@ float dos(int n){
     
     return f;
 }
+float dosr(int n){
+    static int i = 0, signo = 1;
+    static float f = 0.0;
+    if (n == 1)
+        return f + ((float)signo)/((float)i+1);
+    else {
+        f += ((float)signo)/((float)i+1);
+        i+=2;
+        signo*=(-1);
+        return dosr(n-1);
+    }
+}
 //pi^2/6
 float tres(int n){
     int i=0;
     float f = 0.0;
     do{
         f += (1) / (((float)i+1) * ((float)i+1));
-        printf("%f\n",f);
         i++;
     }while(i<n);
     
     return f;
 }
+float tresr(int n) {
+    static int i = 0;
+    static float f = 0.0;
+    if (n == 1)
+        return f + (1) / (((float)i+1) * ((float)i+1));
+    else {
+        f += (1) / (((float)i+1) * ((float)i+1));
+        i++;
+        return tresr(n-1);
+    }
+}
+
 //pi^2 / 8
-float cuatro (int n){
-    float r=0;
+float cuatro(int n){
+    float r = 0.0;
     int i=1;
-    
     do{
         r+=((1.0)/((2*i-1)*(2*i-1)));
         i++;
     }while(i<=n);
     return r;
+}
+float cuatror(int n){
+    static float r = 0.0;
+    static int i = 1;
+    if (n == 1)
+        return r + ((1.0)/((2*i-1)*(2*i-1)));
+    else {
+        r+=((1.0)/((2*i-1)*(2*i-1)));
+        i++;
+        return cuatror(n-1);
+    }
 }
 // 1/2
 float cinco(int n){
@@ -79,6 +125,18 @@ float cinco(int n){
     }while(i<n++||j<n+3);
     return f;
 }
+float cincor(int n){
+    static int i = 1, j = 3;
+    static float f = 0.0;
+    if (n == 1)
+        return f + ((1) / ((float)i*j));
+    else {
+        f += ((1) / ((float)i*j));
+        i+=2;
+        j+=2;
+        return cincor(n-1);
+    }
+}
 // 3/4
 float seis(int n){
     int i=1, j=3;
@@ -89,6 +147,18 @@ float seis(int n){
         j+=1;
     }while(j<n+3);
     return f;
+}
+float seisr(int n){
+    static int i = 1, j = 3;
+    static float f = 0.0;
+    if (n ==1)
+        return f + ((1) / ((float)i*j));
+    else {
+        f += ((1) / ((float)i*j));
+        i+=1;
+        j+=1;
+        return seisr(n-1);
+    }
 }
 // e^x
 float siete(float x, int n){
@@ -495,21 +565,27 @@ int main(){
     {
         case 1:
             printf("\nln(2) = %f\n",uno(n));
+            printf("ln(2) (recursiva) = %f\n",unor(n));
             break;
         case 2:
             printf("\npi/4 = %f\n",dos(n));
+            printf("\npi/4 (recursiva) = %f\n",dosr(n));
             break;
         case 3:
             printf("\npi^2/6 = %f\n",tres(n));
+            printf("\npi^2/6 (recursiva) = %f\n",tresr(n));
             break;
         case 4:
             printf("\npi^2/8 = %f\n",cuatro(n));
+            printf("\npi^2/8 (recursiva) = %f\n",cuatror(n));
             break;
         case 5:
             printf("\n1/2 = %f\n",cinco(n));
+            printf("\n1/2 (recursiva)= %f\n",cincor(n));
             break;
         case 6:
             printf("\n3/4 = %f\n",seis(n));
+            printf("\n3/4 (recursiva)= %f\n",seisr(n));
             break;
         case 7:
             printf("\ne ^ %.2f = %fºn",x,siete(x,n));
