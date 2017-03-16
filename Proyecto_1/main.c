@@ -178,7 +178,7 @@ float sieter(float x, int n){
     static float r = 1, num = 1;
     static int i = 1, fact = 1;
     if (n == 1)
-        return r + (num/(fact));
+        return r ;
     else {
         num*=x;
         fact*=i;
@@ -204,6 +204,18 @@ float ocho(float x, int n){
             printf("Datos incorretos\n\n");
         }
      return r;
+}
+float ochor(float x, int n){
+    static float f = 0.0;
+    static int i = 1, sig = 1;
+    static float num = 1;
+    if(x>-1&&x<=1){
+        if (n == 1)
+            return f;
+    }else{
+        printf("Datos incorretos\n\n");
+    }
+    return 0;
 }
 // 1/2 ln(1+x/1-x)
 float nueve(float x, int n){
