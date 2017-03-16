@@ -306,10 +306,10 @@ float veinti3r(float x,int n){
             return veinti3r(x,n)+c;
         return 0;}
 }
-
+//senh(x)
 float veinti4(int n, float x){
     float f = 0.0, fx = x;
-    int i = 0;
+    int i = 1;
     while (i<n) {
         f += fx;
         fx *= (x*x)/(2*i+1);
@@ -423,208 +423,121 @@ float veinti9r(float x,int n)
     return 0;
 }
 
-int main() {
-    int c, n;
-    float x;
-    printf("Seleccione la operacion a realizar\n");
-    printf("1) ln(2)\n2) \n4)\n3)  \n4) \n5) 1/2\n6) \n11) ln(x)\n12) a^x\n13) \n");
-    scanf("%i",&c);
-    switch (c) {
+int main(){
+    char op;
+    int i,n;
+    float x,a;
+    do{
+        printf("Introduzca numero de iteraciones: ");
+        scanf("%d",&n);}
+    while(n<=1);
+    do{
+        printf("\nCalculara constantes (c) o variables (v)? ");
+        fflush(stdin);
+        op=getchar();}
+    while((op!='c')&&(op!='v'));
+    do{
+        if((op=='C')||(op=='c')){
+            system("cls");
+            printf("\tIntroduzca opcion:\n");
+            printf("\n1)ln(2)\n2)pi/4\n3)pi^2/6\n4)pi^2/8\n5)1/2\n6)3/4\n>>Su opcion: ");}
+        else{
+            printf("\nIntroduzca valor de x (recuerde ingresar valores correctos para las formulas; no se garantiza la certeza del resultado de otra forma): ");
+            scanf("%f",&x);
+            system("cls");
+            printf("\tIntroduzca opcion:\n");
+            printf("\n7)e^x\n8)ln(1+x)\n9)(1/2)ln((1+x)/(1-x))10)ln(x)\n11)ln(x) - Metodo alterno\n12)a^x\n13)Bk\n14)Ek\n15)E2k\n16)sen(x)");
+            printf("\n17)cos(x)\n18)tan(x)\n19)sec(x)\n20)csc(x)\n21)arcsen(x)\n22)arccos(x)\n23)arctan(x)\n24)senh(x)\n25)cosh(x)\n26)tanh(x)");
+            printf("\n27)arcsenh(x)\n28)arctanh(x)\n29)ln(1+x)/(1+x)\n30)e^sen(x)\n>>Su opcion: ");}
+        scanf("%d",&i);}
+    while((i<1)||(i>30));
+    switch(i)
+    {
         case 1:
-            printf("1) ln(2)\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("El resultado es: %f\n",uno(n));
+            printf("\nln(2) = %f",uno(n));
             break;
         case 2:
-            printf("2) \u03C0/4\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("El resultado es: %f\n",dos(n));
+            printf("\npi/4 = %f",dos(n));
             break;
         case 3:
-            printf("3\u03C0\u00B2/6\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("El resultado es: %f\n",tres(n));
+            printf("\npi^2/6 = %f",tres(n));
             break;
         case 4:
-            printf("1/2\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("El resultado es: %f\n",cinco(n));
+            printf("\npi^2/8 = %f",cuatro(n));
             break;
         case 5:
-            printf("1/2\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("El resultado es: %f\n",cinco(n));
+            printf("\n1/2 = %f",cinco(n));
             break;
         case 6:
-            printf("1/2\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("El resultado es: %f\n",seis(n));
+            printf("\n3/4 = %f",seis(n));
             break;
         case 7:
-            printf("1/2\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("Ingrese x\n");
-            scanf("%f",&x);
-            printf("El resultado es: %f\n",siete(x, n));
+            printf("\ne ^ %.2f = %f",x,siete(x,n));
             break;
         case 8:
-            printf("1/2\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("Ingrese x\n");
-            scanf("%f",&x);
-            printf("El resultado es: %f\n",ocho(x,n));
+            printf("\nln(1+%.2f) = %f",x,ocho(x,n));
             break;
         case 9:
-            printf("1/2\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("El resultado es: %f\n",cinco(n));
             break;
         case 10:
-            printf("1/2\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("El resultado es: %f\n",cinco(n));
             break;
         case 11:
-            printf("ln(x)\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("Ingrese el valor de x\n");
-            scanf("%f",&x);
-            printf("El resultado es: %f\n",once(n,x));
+            printf("\nln(%.2f) = %f",x,once(n,x));
             break;
         case 12:
-            printf("1/2\n");
-            float a;
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("Ingrese el valor de x\n");
-            scanf("%f",&x);
-            printf("Ingrese el valor de a\n");
+            printf("\nIntroduzca valor de a: ");
             scanf("%f",&a);
-            printf("El resultado es: %f\n",doce(n, x, a));
+            printf("%.2f ^ %.2f = %f",a,x,doce(n,x,a));
             break;
         case 13:
-            printf("1/2\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("El resultado es: %f\n",cinco(n));
+            printf("\nB(%.0f) = %li",x,trece(n,x));
             break;
         case 14:
-            printf("1/2\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("El resultado es: %f\n",cinco(n));
+            printf("\nE(%.0f) = %f",x,catorce(x,n));
             break;
         case 15:
-            printf("1/2\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("El resultado es: %f\n",cinco(n));
             break;
         case 16:
-            printf("1/2\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("El resultado es: %f\n",cinco(n));
+            printf("\nsen(%.2f) = %f",x,diezy6(n,x));
             break;
         case 17:
-            printf("1/2\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("El resultado es: %f\n",cinco(n));
+            printf("\ncos(%.2f) = %f\nResultado recursividad: %f",x,diezy7(x,n),diezy7r(x,n));
             break;
         case 18:
-            printf("1/2\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("El resultado es: %f\n",cinco(n));
             break;
         case 19:
-            printf("1/2\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("El resultado es: %f\n",cinco(n));
             break;
         case 20:
-            printf("1/2\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("El resultado es: %f\n",cinco(n));
             break;
         case 21:
-            printf("1/2\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("El resultado es: %f\n",cinco(n));
+            printf("\narcsen(%.2f) = %f\nResultado recursividad: %f",x,veinti1(x,n),veinti1r(x,n));
             break;
         case 22:
-            printf("1/2\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("El resultado es: %f\n",cinco(n));
             break;
         case 23:
-            printf("1/2\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("El resultado es: %f\n",cinco(n));
+            printf("\narctan(%.2f) = %f\nResultado recursividad: %f",x,veinti3(x,n),veinti3r(x,n));
             break;
         case 24:
-            printf("1/2\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("El resultado es: %f\n",cinco(n));
+            printf("\nsenh(%.2f) = %f",x,veinti4(n,x));
             break;
         case 25:
-            printf("1/2\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("El resultado es: %f\n",cinco(n));
+            printf("\ncosh(%.2f) = %f\nResultado recursividad: %f",x,veinti5(x,n),veinti5r(x,n));
             break;
         case 26:
-            printf("1/2\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("El resultado es: %f\n",cinco(n));
             break;
         case 27:
-            printf("1/2\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("El resultado es: %f\n",cinco(n));
+            printf("\narcsenh(%.2f) = %f\nResultado recursividad: %f",x,veinti7(x,n),veinti7r(x,n));
             break;
         case 28:
-            printf("1/2\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("El resultado es: %f\n",cinco(n));
+            printf("\narctanh(%.2f) = %f",x,veinti8(n,x));
             break;
         case 29:
-            printf("1/2\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("El resultado es: %f\n",cinco(n));
+            printf("\nln(1+%.2f)/(1+%.2f) = %f\nResultado recursividad: %f",x,x,veinti9(x,n),veinti9r(x,n));
             break;
         case 30:
-            printf("1/2\n");
-            printf("Ingrese el numero de iteraciones\n");
-            scanf("%i",&n);
-            printf("El resultado es: %f\n",cinco(n));
             break;
-
         default:
+            printf("\nNo se como llego a mostrar este mensaje, pero no le sirvio de mucho :v");
             break;
     }
-    printf("Desea hacer otra operacion?\n");
-    return 0;
-}
+    return 0;}
