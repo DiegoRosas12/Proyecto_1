@@ -19,6 +19,12 @@ int factorial(int n){
         return n *factorial(n-1);
     }
 }
+// Conbinacion
+int comb(int k, int l){
+    int f;
+    f = (factorial(k)) / (factorial(l)*factorial(k-1));
+    return f;
+}
 //Ln(2)
 float uno(int n){
     int i=0, signo = 1;
@@ -189,7 +195,7 @@ float sieter(float x, int n){
 }
 // ln (1 + x)
 float ocho(float x, int n){
-    float r=0;
+    float r = 0;
     int i=1,sig=1;
     float num=1;
     if(x>-1&&x<=1){
@@ -201,19 +207,26 @@ float ocho(float x, int n){
     }while(i<=n);
     }else{
             
-            printf("Datos incorretos\n\n");
+            printf("Datos incorretos (-1 < x <= 1)\n\n");
         }
      return r;
 }
 float ochor(float x, int n){
-    static float f = 0.0;
+    static float r = 0.0;
     static int i = 1, sig = 1;
     static float num = 1;
     if(x>-1&&x<=1){
-        if (n == 1)
-            return f;
+        if (n == 0)
+            return r ;
+        else {
+            num *= x;
+            r+=((sig)*((num/i)));
+            sig*= -1;
+            i++;
+            return ochor(x, n-1);
+        }
     }else{
-        printf("Datos incorretos\n\n");
+        printf("Datos incorretos (-1 < x <= 1)\n\n");
     }
     return 0;
 }
@@ -230,6 +243,21 @@ float nueve(float x, int n){
     }while(i<n);
     return r;
     
+}
+float nuever(float x, int n){
+    static float r = 0;
+    static int i = 0;
+    static float num;
+    if (i == 0)
+        num = x;
+    if (n == 1)
+        return r;
+    else {
+        r+=((num)/(2*i+1));
+        num*=x*x;
+        i++;
+        return nuever(x, n-1);
+    }
 }
 //Ln(x)
 float diez(float x, int n){
@@ -332,6 +360,19 @@ float diezy6(int n, float x){
     }
     return sx;
 }
+float diezy6r(int n,float x){
+    static float fc;
+    static int i=1;
+    float c;
+    if(i==1)
+        fc=x;
+    fc*=((x/(2*i))*(x/(2*i+1)));
+    i++;
+    c=(2*(i%2)-1)*fc;
+    if (i<(n+1))
+        return diezy6r(n,x)+c;
+    return x;
+}
 //cos(x)
 float diezy7(float x,int n){
     float cx,fc;
@@ -369,17 +410,18 @@ float veinti1(float x,int n){ //Arcsin(x)
 float veinti1r(float x,int n){
     static float fc;
     static int i=1;
-    int aux,j;
-    if(i==1)
+    float aux;
+    if(i==1){
         fc=x;
-    aux=2*i;
-    fc*=((aux*x)/(i*(i-1))*((aux-1)*x)/(i*(i-1))*(1/(aux+1)));
-    for(j=0;j<i;j++)
-        fc/=4;
+        fc*=(pow(x,3)/6);}
+    else{
+        aux=2*i+1;
+        fc*=(((aux-1)*x)/i*((aux-2)*x)/i*(1/(4*aux)));}
     i++;
+    aux=fc;
     if(i<=(n+1))
-        return veinti1r(x,n)+fc;
-    return 0;
+        return veinti1r(x,n)+aux;
+    return x;
 }
 //arccos
 float veinti2(int n, float x){
@@ -421,24 +463,25 @@ float veinti3r(float x,int n){
     if(i==1)
         fc=x;
     if((x<=-1)||(x>=1)){
-        fc/=(x*x*(2*i));
-        c=(1-((i+1)%2)*2)*fc;
+        fc/=(x*x*(2*i+1));
+        c=(2*(i%2)-1)*fc;
         i++;
         if(x<=-1){
             if(i<=(n+1))
                 return veinti3r(x,n)+c;
-            return -hpi;}
+            return -hpi-(1/x);}
         else{
             if(i<=(n+1))
                 return veinti3r(x,n)+c;
-            return hpi;}}
+            return hpi-(1/x);}}
     else{
-        fc*=((x/(2*i))*x);
+        fc*=((x/(2*i+1))*x);
         c=(1-2*(i%2))*fc;
         i++;
         if(i<=(n+1))
             return veinti3r(x,n)+c;
-        return 0;}
+        return x;
+    }
 }
 //senh(x)
 float veinti4(int n, float x){
@@ -451,19 +494,20 @@ float veinti4(int n, float x){
     }
     return f;
 }
-float veinti4r(int n, float x){
-    static float fx;
-    static int i;
-    if (n == 1) {
-        return x;
-    }else{
-        fx *= (x*x)/(2*i+1);
-        i++;
-        return veinti4(n-1, x) + fx;
-    }
-    return 0;
-    
+float veinti4r(int n,float x){
+    static float fc;
+    static int i=1;
+    float c;
+    if(i==1)
+        fc=x;
+    fc*=((x/(2*i))*(x/(2*i+1)));
+    i++;
+    c=fc;
+    if (i<(n+1))
+        return veinti4r(n,x)+c;
+    return x;
 }
+
 float veinti5(float x,int n){  //Cosh(x)
     float chx,fc;
     int i;
@@ -475,14 +519,14 @@ float veinti5(float x,int n){  //Cosh(x)
 float veinti5r(float x,int n){
     static float fc=1;
     static int i=1;
-    fc*=((x/(2*n))*(x/(2*n-1)));
+    float c;
+    fc*=((x/(2*i))*(x/(2*i-1)));
+    c=fc;
     i++;
     if(i<=(n+1))
-        return diezy7r(x,n)+fc;
-    return 0;
+        return veinti5r(x,n)+c;
+    return 1;
 }
-
-
 
 float veinti7(float x,int n){ //Arcsinh(x)
     float ashx,fc;
@@ -500,19 +544,18 @@ float veinti7(float x,int n){ //Arcsinh(x)
 float veinti7r(float x,int n){
     static float fc;
     static int i=1;
-    int aux,j;
-    float c;
-    if(i==1)
+    float aux;
+    if(i==1){
         fc=x;
-    aux=2*i;
-    fc*=((aux*x)/(i*(i-1))*((aux-1)*x)/(i*(i-1))*(1/(aux+1)));
-    for(j=0;j<i;j++)
-        fc/=4;
-    c=(1-2*(i%2))*fc;
+        fc*=(pow(x,3)/6);}
+    else{
+        aux=2.0*(float)i+1.0;
+        fc*=(((aux-1)*x)/i*((aux-2)*x)/i*(1/(4*aux)));}
+    aux=(1-2*(i%2))*fc;
     i++;
     if(i<=(n+1))
-        return veinti7r(x,n)+c;
-    return 0;
+        return veinti7r(x,n)+aux;
+    return x;
 }
 
 float veinti8(int n, float x){
@@ -530,6 +573,20 @@ float veinti8(int n, float x){
     return f;
     
 }
+float veinti8r(int n,float x){
+    static float fc;
+    static int i=1;
+    float c;
+    if(i==1)
+        fc=x;
+    fc*=(x*(x/(2*i+1)));
+    i++;
+    c=fc;
+    if(i<=(n+1))
+        return veinti8r(n,x)+c;
+    return x;
+}
+
 float veinti9(float x,int n){ //ln(1+x)/1+x
     float lxdx,fc;
     int i,j,sgn;
@@ -540,27 +597,31 @@ float veinti9(float x,int n){ //ln(1+x)/1+x
         fc*=x;}
     return lxdx;
 }
-float veinti9r(float x,int n)
-{
-    static float fc;
-    static int i=1,j=0;
+float veinti9r(float x,int n){
+    static float fc,aux=1.0;
+    static int i=1;
     float c;
     if(i==1)
         fc=x;
-    for(;j<=i;j++)
-        fc+=(1/(j+1));
-    fc*=x;
-    c=(1-2*(i%2))*fc;
     i++;
+    aux+=(1.0/(float)i);
+    fc*=x;
+    c=(2*(i%2)-1)*fc*aux;
     if(i<=(n+1))
         return veinti9r(x,n)+c;
-    return 0;
+    return x;
 }
 
 int main(){
     char op;
     int i,n;
+    int opc;
     float x = 0.0,a;
+    
+    do{
+        system("clc");
+        n = 0;
+        op = '\0';
     do{
         printf("Introduzca numero de iteraciones: ");
         scanf("%d",&n);}
@@ -618,9 +679,11 @@ int main(){
             break;
         case 8:
             printf("\nln(1+%.2f) = %f\n",x,ocho(x,n));
+            printf("\nln(1+%.2f)(recursiva) = %f\n",x,ochor(x,n));
             break;
         case 9:
             printf("\nln(1+%.2f) = %f\n",x,nueve(x,n));
+            printf("\nln(1+%.2f) (recursiva) = %f\n",x,nuever(x,n));
             break;
         case 10:
             printf("\nln(1+%.2f) = %f\n",x,diez(x,n));
@@ -684,4 +747,9 @@ int main(){
             printf("\nNo se como llego a mostrar este mensaje, pero no le sirvio de mucho :v");
             break;
     }
-    return 0;}
+        printf("\n¿DESEA REALIZAR OTRA OPERACION\n SI=1\nNO=0\n");
+        scanf("%i",&opc);
+        
+}while(opc==1);
+    return 0;
+}
