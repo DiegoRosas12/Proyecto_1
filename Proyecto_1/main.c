@@ -21,8 +21,23 @@ int factorial(int n){
 }
 // Conbinacion
 int comb(int k, int l){
-    int f;
-    f = (factorial(k)) / (factorial(l)*factorial(k-1));
+    int f, a, fa=1, b, fb=1, c, fc=1, i = 0;
+    a = k;
+    if (a == 0)
+        fa = 1;
+    b = l;
+    if (b == 0)
+        fb = 1;
+    c = k-1;
+    if (c == 0)
+        fc = 1;
+    for (i = 0; i < a; i++)
+        fa *= (a-i);
+    for (i = 0; i < a; i++)
+        fb *= (b-i);
+    for (i = 0; i < a; i++)
+        fc *= (c-i);
+    f = (fa) / (fb*fc);
     return f;
 }
 //Ln(2)
@@ -619,8 +634,9 @@ int main(){
     float x = 0.0,a;
     
     do{
-        system("clc");
+        
         n = 0;
+        system("cls");
         op = '\0';
     do{
         printf("Introduzca numero de iteraciones: ");
