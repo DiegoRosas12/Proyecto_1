@@ -20,24 +20,27 @@ int factorial(int n){
     }
 }
 // Conbinacion
-int comb(int k, int l){
+float comb(int k, int l){
     int f, a, fa=1, b, fb=1, c, fc=1, i = 0;
+    
     a = k;
-    if (a == 0)
-        fa = 1;
     b = l;
-    if (b == 0)
-        fb = 1;
     c = k-1;
-    if (c == 0)
-        fc = 1;
     for (i = 0; i < a; i++)
         fa *= (a-i);
     for (i = 0; i < a; i++)
         fb *= (b-i);
     for (i = 0; i < a; i++)
         fc *= (c-i);
-    f = (fa) / (fb*fc);
+    
+    if (a == 0)
+        fa = 1;
+    if (b == 0)
+        fb = 1;
+    if (c == 0)
+        fc = 1;
+    
+    f = (fa) /(fb*fc);
     return f;
 }
 //Ln(2)
@@ -291,6 +294,22 @@ float diez(float x, int n){
     return 2*r;
     
 }
+float diezr(float x, int n) {
+    static float r = 0;
+    static int i = 0;
+    float ope=((x-1)/(x+1));
+    static float a;
+    if (i == 0)
+        a = ope;
+    if (n == 0)
+        return 2*r;
+    else {
+        r+=(a*(1/(2*(float)i+1)));
+        a*=ope*ope;
+        i++;
+        return diezr(x, n-1);
+    }
+}
 //Ln(x)
 float once(int n, float x){
     int i = 0;
@@ -331,9 +350,9 @@ float doce(int n, float x, float a){
 }
 
 //Bernoulli
-long int trece(int n, int x)
+long trece(int n, int x)
 {
-    int f = 1;
+    long f = 1;
     if(n == 1|| n == 0 || n == x)
         return 	1;
     unsigned int d = n - x;
@@ -341,7 +360,7 @@ long int trece(int n, int x)
     while(n>1 || x>1 || d>1)
     {
         f *= n;
-        f /= (x * d);
+        f /= (x * (float)d);
         if(n>1)
             n--;
         if(x>1)
@@ -409,7 +428,7 @@ float diezy7r(float x,int n){
     return 0;
 }
 
-float veinti1(float x,int n){   //Arcsin(x) (Inexacto)
+float veinti1(float x,int n){   //Arcsin(x)
     float asx,fc;
     int i;
     float c;
@@ -641,9 +660,9 @@ int main(){
     do{
         printf("Introduzca numero de iteraciones: ");
         scanf("%d",&n);}
-    while(n<=1);
+    while(n<1);
     do{
-        printf("\nCalculara constantes (c) o variables (v)? ");
+        printf("\nCalcular constantes (c) o variables (v)? ");
         fflush(stdin);
         op=getchar();}
     while((op!='c')&&(op!='v'));
@@ -703,6 +722,7 @@ int main(){
             break;
         case 10:
             printf("\nln(1+%.2f) = %f\n",x,diez(x,n));
+            printf("\nln(1+%.2f) = %f\n",x,diezr(x,n));
             break;
         case 11:
             printf("\nln(%.2f) = %f\n",x,once(n,x));
@@ -727,6 +747,12 @@ int main(){
             printf("\ncos(%.2f) = %f\nResultado recursividad: %f\n",x,diezy7(x,n),diezy7r(x,n));
             break;
         case 18:
+            printf("Ingrese k\n");
+            int k, l;
+            scanf("%i",&k);
+            printf("Ingrese l\n");
+            scanf("%i",&l);
+            printf("comb %f\n",comb(k, l));
             break;
         case 19:
             break;
