@@ -394,17 +394,14 @@ float diezy7r(float x,int n){
     return 0;
 }
 
-float veinti1(float x,int n){ //Arcsin(x)
+float veinti1(float x,int n){   //Arcsin(x) (Inexacto)
     float asx,fc;
-    int c,i,j;
+    int i;
+    float c;
     for(i=0, asx=0, fc=x;i<n;i++){
         asx+=fc;
-        c=2*i+1;
-        fc*=(((c*x)/((i+1)*(i+2)))*(((c+1)*x)/((i+1)*(i+2)))*(1/c));
-        if(i==0)
-            continue;
-        for(j=0;j<i;j++)
-            fc/=4;}
+        c=2.0*((float)i+1.0)+1.0;
+        fc*=((((c+1)*x)/((i+1)*(i+2)))*(((c+2)*x)/((i+1)*(i+2)))*(1/(4*c)));}
     return asx;
 }
 float veinti1r(float x,int n){
@@ -438,6 +435,9 @@ float veinti2(int n, float x){
     }
     return M_PI_2 - f;
 }
+float veinti2r(int n,float x){	//Provisional
+    return M_PI_2-veinti1r(x,n);
+}
 
 float veinti3(float x,int n){   //Arctg(x)
     float atx,fc,hpi=3.141592/2;
@@ -445,7 +445,7 @@ float veinti3(float x,int n){   //Arctg(x)
     if((x<=-1)||(x>=1)){
         for(i=0, atx=0, fc=x, sgn=-1;i<n;i++, sgn*=(-1)){
             atx+=(sgn*fc);
-            fc/=(x*x*(2*i+1));}
+            fc/=(x*x*(2*(i+1)+1));}
         if(x<=-1)
             return atx-hpi;
         else
@@ -453,7 +453,7 @@ float veinti3(float x,int n){   //Arctg(x)
     else
         for(i=0, atx=0, fc=x, sgn=1;i<n;i++, sgn*=(-1)){
             atx+=(sgn*fc);
-            fc*=((x/(2*i+1))*x);}
+            fc*=((x/(2*(i+1)+1))*x);}
     return atx;
 }
 float veinti3r(float x,int n){
